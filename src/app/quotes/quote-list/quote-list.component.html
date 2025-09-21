@@ -1,0 +1,22 @@
+<div class="quotes-container">
+  <h2>All Quotes</h2>
+  <button mat-raised-button color="primary" routerLink="/quotes/new">
+    Create New Quote
+  </button>
+
+  <mat-list *ngIf="quotes$ | async as quotes">
+    <mat-list-item *ngFor="let quote of quotes">
+      <mat-card class="quote-card">
+        <mat-card-title>Garment: {{ quote.garmentName }}</mat-card-title>
+        <mat-card-subtitle>Quantity: {{ quote.quantity }}</mat-card-subtitle>
+        <mat-card-content>
+          <p>Final Piece Price: {{ quote.finalPiecePrice | currency }}</p>
+          <p>Total Quote Price: {{ quote.totalQuotePrice | currency }}</p>
+          <ul>
+            <li *ngFor="let g of quote.graphics">Graphic Colors: {{ g.colorCount }}</li>
+          </ul>
+        </mat-card-content>
+      </mat-card>
+    </mat-list-item>
+  </mat-list>
+</div>
